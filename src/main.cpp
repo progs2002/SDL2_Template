@@ -12,6 +12,24 @@ bool isRunning = false;
 
 RES size;
 
+int R,G,B;
+
+int init()
+{
+    SDL_Init(SDL_INIT_EVERYTHING);
+	size = getRES();
+	pen = new Renderer("Window name", size);
+
+    //initialize variables 
+	R = 100;
+	G = 60;
+	B = 120;
+
+    isRunning = true;
+	return 0;
+}
+
+
 void update()
 {
     //handle events
@@ -30,27 +48,20 @@ void update()
 			
 		}
 	}
+	
+
 }
 
 void render()
 {
     //display simpleWindow
-	pen->setColour(0, 255, 255);
+	
+	pen->setColour(R,G,B);
 	pen->drawBackGround();
+	pen->setColour(0, 255, 255);
     pen->present();
 }
 
-int init()
-{
-    SDL_Init(SDL_INIT_EVERYTHING);
-	size = getRES();
-	pen = new Renderer("Window name", size);
-
-    //initialize variables 
-
-    isRunning = true;
-	return 0;
-}
 
 int main(int argc, char* args[])
 {
